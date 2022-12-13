@@ -12,7 +12,7 @@ pipeline{
                     withSonarQubeEnv(credentialsId: 'sonarkube') {
                         
                      sh 'chmod -R 777 gradlew'
-                     sh './gradlew sonarqube'
+                     sh './gradlew'
     
                 }
 
