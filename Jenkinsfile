@@ -1,5 +1,8 @@
 pipeline{
     agent any
+     environment{
+        VERSION = "${env.BUILD_ID}"
+    }
     stages{
         stage("sonar quality check"){
          //agent{
@@ -31,6 +34,29 @@ pipeline{
         
             
         }
+
+
+
     }
+
+stage("building docker image and pushing it to nexus"){
+           steps{
+               script{
+
+               withCredentials([string(credentialsId: 'admin', variable: 'docker_pass')]) {
+                    sh '''
+
+                   docker build -t 192.168.2.168:8083/springapp:${VERSION} .
+                   docker login -u admin -p $docker_pass 192.168.2.168:8083
+                  docker push  192.168.2.168:8083/springapp:${VERSION}
+                  docker rmi 192.168.2.168:8083/springapp:${VERSION}  
+                  docker image prune -f      
+                  '''
+                  }
+                }
+              }
+           }
+
+
 }
 }
