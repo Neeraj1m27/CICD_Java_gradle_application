@@ -4,12 +4,12 @@ pipeline{
   //      VERSION = "${env.BUILD_ID}"
    // }
     stages{
-        stage("sonar quality check"){
-         agent{
-              docker {
-                  image 'openjdk:11'
-                }
-             }
+       stage("sonar qube analysis"){
+            agent{
+               docker {
+                    image 'openjdk:11'
+               }
+            }
             steps{
                 script{
                     withSonarQubeEnv(credentialsId: 'sonar3') {
