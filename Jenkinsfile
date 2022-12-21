@@ -1,8 +1,8 @@
 pipeline{
     agent any
-     environment{
-        VERSION = "${env.BUILD_ID}"
-    }
+//     environment{
+  //      VERSION = "${env.BUILD_ID}"
+   // }
     stages{
         stage("sonar quality check"){
        //  agent{
@@ -19,12 +19,12 @@ pipeline{
                      
                        '''
                    }
-                     timeout(5) {
-                     def qg = waitForQualityGate()
-                      if (qg.status != 'OK') {
-                           error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                      }
-                    }
+                 //    timeout(5) {
+                   //  def qg = waitForQualityGate()
+                     // if (qg.status != 'OK') {
+//                           error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                     // }
+                   // }
             
 
                 
