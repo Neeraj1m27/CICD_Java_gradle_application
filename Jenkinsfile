@@ -5,10 +5,10 @@ pipeline{
    // }
     stages{
        stage("sonar qube analysis") {
-            agent{ 
+           //  agent{ 
               
-               docker { image 'openjdk:11' }
-            }
+            //   docker { image 'openjdk:11' }
+          //  }
             steps{
                 script{
                     withSonarQubeEnv(credentialsId: 'sonar3') {
