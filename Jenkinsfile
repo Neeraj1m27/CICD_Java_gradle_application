@@ -12,11 +12,11 @@ pipeline{
            // }
             steps{
                 script{
-                  withSonarQubeEnv(credentialsId: 'ddosattack') {
+                    withSonarQubeEnv(credentialsId: 'sonar1') {
     
                      sh '''
                        chmod -R 777 gradlew
-                       ./gradlew sonarqube
+                       
                      
                        '''
                    }
