@@ -1,8 +1,8 @@
 pipeline{
     agent any
-    environment{
-      VERSION = "${env=BUILD_ID}"
-    }
+ //   environment{
+  //    VERSION = "${env=BUILD_ID}"
+   // }
     stages{
        stage("sonar qube analysis") {
            //  agent{ 
@@ -25,19 +25,9 @@ pipeline{
                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
                       }
                     }
-            
-
-                
-                
+                     }
             }
-        
-            
-        }
-
-
-
+       }
     }
-  
 
-    }
 }
