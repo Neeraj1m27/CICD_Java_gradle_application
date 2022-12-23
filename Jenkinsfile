@@ -38,10 +38,10 @@ pipeline{
       steps{
         script{
              sh '''
-            docker build -t 192.168.2.168:8083/springapp:${version} .
+            docker build -t 192.168.2.168:8083/springapp:${VERSION} .
             docker login -u admin -p admin 192.168.2.168:8083
-            docker push 192.168.2.168:8083/springapp:${version}
-           docker rmi 192.168.2.168:8083/springapp:${version}
+            docker push 192.168.2.168:8083/springapp:${VERSION}
+           docker rmi 192.168.2.168:8083/springapp:${VERSION}
             docker image prone -f
             '''
        }
