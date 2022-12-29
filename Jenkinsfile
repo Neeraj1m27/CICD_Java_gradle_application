@@ -19,12 +19,12 @@ pipeline{
                      
                        '''
                    }
-                   timeout(5) {
-                     def qg = waitForQualityGate()
-                      if (qg.status != 'OK') {
-                           error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                      }
-                    }
+   //        timeout(5) {
+     //                def qg = waitForQualityGate()
+       //               if (qg.status != 'OK') {
+         //                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
+           //           }
+    //                }
                 }
             }
        }
@@ -37,24 +37,24 @@ pipeline{
 
      
             
-   // stage("build docker image"){
-  //   steps{
-   //     script{
-     //     withCredentials([string(credentialsId: 'admin1', variable: 'password')]) {
+    stage("build docker image"){
+     steps{
+        script{
+          withCredentials([string(credentialsId: 'admin1', variable: 'password')]) {
 
-     //        sh '''
-      //     docker build -t 192.168.2.168:8083/springapp:${VERSION} .
-       //     docker login -u admin -p $password 192.168.2.168:8083
-        //    docker push 192.168.2.168:8083/springapp:${VERSION}
-         //  docker rmi 192.168.2.168:8083/springapp:${VERSION}
-         //   docker image prune -f
-         //  '''
+             sh '''
+           docker build -t 192.168.2.168:8083/springapp:${VERSION} .
+            docker login -u admin -p $password 192.168.2.168:8083
+            docker push 192.168.2.168:8083/springapp:${VERSION}
+           docker rmi 192.168.2.168:8083/springapp:${VERSION}
+            docker image prune -f
+          '''
                 
 }
        }
-   //  }
-  // }
+    }
+   }
 
-  //  }
+    }
 
-//}
+}
