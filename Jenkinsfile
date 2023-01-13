@@ -55,8 +55,23 @@ pipeline{
            }
         }
 
-      
+      stage("this is datree"){
+               dir('kubernetes') {
+  withEnv(['DATREE_TOKEN=05e0ff60-fd92-4e55-a87c-78be62f889aa']) {
+    
+           
+           sh 'helm datree test myapp/'
+           
+                 }
 
-    }
+                 }
+              }
 
-}
+           }
+
+    post {
+		always {
+			mail bcc: '', body: "<br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "${currentBuild.result} CI: Project name -> ${env.JOB_NAME}", to: "neerajtank94@gmail.com";  
+		}
+	}
+
