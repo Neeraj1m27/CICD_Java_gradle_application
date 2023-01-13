@@ -56,6 +56,11 @@ pipeline{
         }
 
       stage("this is datree"){
+              agent{ 
+              
+               docker { image 'fluxcd/helm-operator:1.4.4' }
+           }
+
         steps{ 
           script{
                dir('kubernetes') {
