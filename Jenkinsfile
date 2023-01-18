@@ -28,15 +28,7 @@ pipeline{
                 }
             }
        }
-                  
-       
-                
 
-       
-    
-
-     
-            
     stage("build docker image"){
      steps{
         script{
@@ -54,7 +46,15 @@ pipeline{
                }
            }
         }
+           
+    stage{
+      steps{
+        script{
+            
 
+        }
+      }
+    }       
     
 
            }
