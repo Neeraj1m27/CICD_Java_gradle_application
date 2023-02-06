@@ -33,17 +33,17 @@ pipeline{
      steps{
         script{
       
-          withCredentials([usernameColonPassword(credentialsId: 'dockerhublogin', variable: 'dockerhublogin')]) {
+         
 
              sh '''
             docker build -t neeraj1m19/devopsone:${VERSION} .
-            docker login -u Neeraj1m19 -p $dockerhublogin https://index.docker.io/v1/
+            echo neeraj@25 | docker login -u neeraj1m19 --password-stdin
             docker push neeraj1m19/devopsone:${VERSION}
            docker rmi neeraj1m19/devopsone:${VERSION}
             docker image prune -f
           '''
                 
-                    }
+                    
                }
            }
         }
