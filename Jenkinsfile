@@ -54,8 +54,8 @@ pipeline{
           dir('kubernetes') {
             sshagent(['privatekey']) {
              sh '''
-
-           scp -r springboot/ root@192.168.2.28:/home/getkart/ 
+          
+           scp -r -o StrictHostKeyChecking=no springboot/ root@192.168.2.28:/home/getkart/ 
 
              helm upgrade --install springboot getkart@192.168.2.28:/home/getkart/springboot/ --set image.repository="neeraj1m19/devopsone" --set image.tag=${VERSION}
 
