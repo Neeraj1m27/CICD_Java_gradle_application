@@ -8,7 +8,7 @@ image:
   repository: neeraj1m19/devopsone
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v2"
+  tag: "IMAGE_TAG"
 
 imagePullSecrets:
         - name: regsecrt

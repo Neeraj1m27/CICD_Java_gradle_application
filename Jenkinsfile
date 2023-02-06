@@ -48,7 +48,24 @@ pipeline{
            }
         }
            
-        
+         stage("update build tag in helm"){
+     steps{
+        script{
+          dir('kubernetes') {
+            withCredentials([gitUsernamePassword(credentialsId: 'scp', gitToolName: 'Default')]) {
+             sh '''
+
+           scp -r springboot/ getkart@192.168.2.28:/home/getkart/ 
+
+             helm upgrade --install springboot getkart@192.168.2.28:/home/getkart/springboot/ --set image.repository="neeraj1m19/devopsone" --set image.tag=${VERSION}
+
+          '''
+            }
+          }   
+                    
+               }
+           }
+        }
     
 
            }
