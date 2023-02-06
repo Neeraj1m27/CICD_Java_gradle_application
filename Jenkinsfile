@@ -32,13 +32,14 @@ pipeline{
     stage("build docker image"){
      steps{
         script{
-          withCredentials([string(credentialsId: 'admin1', variable: 'password')]) {
+      
+          withCredentials([usernameColonPassword(credentialsId: 'dockerhublogin', variable: 'dockerhublogin')]) {
 
              sh '''
-            docker build -t 192.168.2.168:8083/springapp:${VERSION} .
-            docker login -u admin -p $password 192.168.2.168:8083
-            docker push 192.168.2.168:8083/springapp:${VERSION}
-           docker rmi 192.168.2.168:8083/springapp:${VERSION}
+            docker build -t neeraj1m19/devopsone:${VERSION} .
+            docker login -u Neeraj1m19 -p $dockerhublogin https://index.docker.io/v1/
+            docker push neeraj1m19/devopsone:${VERSION}
+           docker rmi neeraj1m19/devopsone:${VERSION}
             docker image prune -f
           '''
                 
@@ -47,14 +48,7 @@ pipeline{
            }
         }
            
-    stage{
-      steps{
-        script{
-            
-
-        }
-      }
-    }       
+        
     
 
            }
