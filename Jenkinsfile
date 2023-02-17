@@ -47,22 +47,29 @@ pipeline{
            //    }
          //  }
        // }
-           
+             
+
          stage("update build tag in helm"){
      steps{
         script{
-          dir('kubernetes') {
-            sshagent(['privatekey']) {
-             sh '''
-          
-           scp -r -o StrictHostKeyChecking=no springboot/ root@192.168.2.28:/home/getkart/ 
+        
+            sshagent(['jenkinsplusgetkart']) {  
+      
+                 
+     
+      sh 'ssh getkart@192.168.2.28 -o StrictHostKeyChecking=no helm install localhelm localhelm' 
+      //--kubeconfig=/etc/kubernetes/admin.conf'
+      // sh 'scp -r -o StrictHostKeyChecking=no neeraj.txt getkart@192.168.2.28:/home/getkart'
+      
+        } 
+            // sh '''
+            
+            // helm upgrade --install springboot --set image.repository="neeraj1m19/devopsone" --set image.tag=${VERSION}
 
-             helm upgrade --install springboot getkart@192.168.2.28:/home/getkart/springboot/ --set image.repository="neeraj1m19/devopsone" --set image.tag=${VERSION}
-
-          '''
+         // '''
             }
             
-          }   
+            
                     
                }
            }
