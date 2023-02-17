@@ -57,7 +57,7 @@ pipeline{
       
                  
      
-      sh 'ssh getkart@192.168.2.28 -o StrictHostKeyChecking=no helm install localhelm localhelm' 
+     sh ' ssh root@192.168.2.28   helm install local localhelm/springboot
       //--kubeconfig=/etc/kubernetes/admin.conf'
       // sh 'scp -r -o StrictHostKeyChecking=no neeraj.txt getkart@192.168.2.28:/home/getkart'
       
