@@ -38,10 +38,10 @@ pipeline{
 
              sh '''
             docker build -t neeraj1m19/devopsone:${VERSION} .
-            echo neeraj@25 | docker login -u neeraj1m19 --password-stdin
-            docker push neeraj1m19/devopsone:${VERSION}
-          docker rmi neeraj1m19/devopsone:${VERSION}
-            docker image prune -f
+         //   echo neeraj@25 | docker login -u neeraj1m19 --password-stdin
+          //  docker push neeraj1m19/devopsone:${VERSION}
+          //docker rmi neeraj1m19/devopsone:${VERSION}
+           // docker image prune -f
           '''
                 
                     
