@@ -46,7 +46,7 @@ spec:
         - name: regcred
       containers:
         - name: myapp
-          image: neeraj1m29/devopsone:latest 
+          image: neeraj1m29/devopsone:26
           command: ["/bin/sh"]
           args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"]
           imagePullPolicy: IfNotPresent
