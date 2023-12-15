@@ -42,11 +42,10 @@ spec:
         app.kubernetes.io/name: myapp
         app.kubernetes.io/instance: myapp
     spec:
-      imagePullSecrets:
-        - name: regcred
+      
       containers:
         - name: myapp
-          image: neeraj1m29/devopsone:26
+          image: neeraj1m29/devopsone:25
           command: ["/bin/sh"]
           args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"]
           imagePullPolicy: IfNotPresent
