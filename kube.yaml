@@ -43,10 +43,10 @@ spec:
         app.kubernetes.io/instance: myapp
     spec:
       imagePullSecrets:
-        - name: registry-secret
+        - name: regcred
       containers:
         - name: myapp
-          image: imagename
+          image: neeraj1m29/devopsone:latest 
           command: ["/bin/sh"]
           args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"]
           imagePullPolicy: IfNotPresent
@@ -79,3 +79,4 @@ spec:
             limits:
               memory: 0.25Gi 
               cpu: 0.5
+
