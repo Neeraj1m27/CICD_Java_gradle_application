@@ -54,16 +54,19 @@ pipeline{
      steps{
         script{
         
-            sshagent(['jenkinsplusgetkart']) {  
+           /// sshagent(['jenkinsplusgetkart']) {  
       
-                 
+               kubectl apply -f kube.yaml
+          
+
+            kubectl rollout status kube.yaml     
      
      //sh ' ssh root@192.168.2.28   helm install local localhelm/springboot'
-    sh 'ssh root@192.168.2.28 helm upgrade --install local localhelm/springboot --set image.repository="neeraj1m19/devopsone" --set image.tag=${VERSION}'
+   /// sh 'ssh root@192.168.2.28 helm upgrade --install local localhelm/springboot --set image.repository="neeraj1m19/devopsone" --set image.tag=${VERSION}'
       //--kubeconfig=/etc/kubernetes/admin.conf'
       // sh 'scp -r -o StrictHostKeyChecking=no neeraj.txt getkart@192.168.2.28:/home/getkart'
       
-        } 
+     ///   } 
             // sh '''
             
             // helm upgrade --install springboot --set image.repository="neeraj1m19/devopsone" --set image.tag=${VERSION}
